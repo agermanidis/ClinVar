@@ -12,7 +12,7 @@ The script uses a simple DSL to specify the fields to extract from the input XML
 
 To process an XML datasource `input.xml` according schema `schema.py` to produce `output.json`:
 
-    python process_xml_datasource.py input.xml -s schema.py -o test3.json
+    python process_xml_datasource.py input.xml -s schema.py -o output.json
 
 To split the same input to 3 parts and process them in parallel:
 
