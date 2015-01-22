@@ -246,13 +246,16 @@ def split_xml_file(filename, schema_path, n):
     size = character_count(filename)
     part_size = size/n
 
-    iterator = ET.iterparse(open(filename), events = ('start', 'end'))
+
+    iterator = ET.iterparse(open(filename))
     element_tree = []
     part_count = 0
     part_filename = "%s.0" % filename
     current_part_file = open(part_filename, 'w')
     part_filenames = [part_filename]
     started_writing = False
+
+    logger.debug("Splitting %s to %d parts" % (filename, n))
 
     while True:
         try:
@@ -295,7 +298,6 @@ def split_xml_file(filename, schema_path, n):
     return part_filenames
 
 def split_and_process(filename, schema_path, output_filename, n_parts, keep = False):
-    logger.debug("Splitting %s to %d parts" % (filename, n_parts))
     filenames = split_xml_file(filename, schema_path, n_parts)
     parallel_process_files(filenames, schema_path, output_filename)
     if not keep:
