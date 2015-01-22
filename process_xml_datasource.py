@@ -236,7 +236,7 @@ def wrap_around_xml_element(el):
     xml_string = ET.tostring(parent, xml_declaration = True)
     return xml_string.split("<placeholder/>")
 
-# splits XML file at *filename* to (approximately) *n* parts, splitting on path *schema_path*
+# splits XML file at *filename* to *n* parts, splitting on path *schema_path*
 def split_xml_file(filename, schema_path, n):
     schema = load_schema(schema_path)
     split_path = schema['split_path']
